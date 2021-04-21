@@ -20,6 +20,7 @@ class LoginController extends Controller
 
           return view('admin/login');
     }
+    
     public function Login(Request $request)
     {
       if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
@@ -48,7 +49,6 @@ class LoginController extends Controller
         'password' => 'required|string|min:8|same:confirm',
         'confirm' => 'required',
         'email'=>'required|email',
-        
         ]);
 
       $hashedPassword = Auth::user()->password;
