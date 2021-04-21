@@ -1,0 +1,403 @@
+/*
+sudo sass --watch /Users/tower8/Desktop/Maderank/HTML/Current/html/assets/dist/css/custom.scss:/Users/tower8/Desktop/Maderank/HTML/Current/html/assets/dist/css/custom.css
+*/
+body{
+	font-family: 'Inter', sans-serif;
+	font-weight: 400;
+	box-shadow: none;
+	text-shadow:none;
+}
+
+/*Header*/
+.site-header-custom{
+	background-color: white !important;
+    margin-left: 0;
+    margin-bottom: 130px;
+    background-color: rgba(255,255,255,0.9);
+    border-bottom: solid 1px #eaeaea;
+    position: fixed;
+    width: 100%;
+    z-index: 500;
+    top: 0;
+    .header-logo{
+		display: block;
+	    float: left;
+	    height: 48px;
+	    width: 150px;
+	    margin-left: -5px;
+	    margin-right: 20px;
+	    background-image: url("img/maderank.svg");
+	    background-repeat: no-repeat;
+	    background-position: center center;
+    }
+}
+
+/*Homepage*/
+.homepage-search-wrapper{
+	font-size: 1.2rem;
+	height: 60px !important;
+
+}
+/*Hero*/
+.hero-wrapper{}
+.hero-background{
+	background-image: url(img/bg_branded.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.subtitle-display{color:#ffffff;}
+.hero-display{color:#0A3161;font-weight: 800;font-size: 28px;text-align: center;}
+
+.subtitle-wrapper{
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	p {
+	  font-size: 2.2rem;
+	  padding: 0.5rem;
+	  font-weight: 800;
+	  letter-spacing: 0.1rem;
+	  text-align: center;
+	  overflow: hidden;
+	}
+	p span.typed-text {
+	  font-weight: 900;
+	  color: #B31942;
+	}
+	p span.cursor {
+	  display: inline-block;
+	  background-color: #ccc;
+	  margin-left: 0.1rem;
+	  width: 3px;
+	  animation: blink 1s infinite;
+	}
+	p span.cursor.typing {
+	  animation: none;
+	}
+	@keyframes blink {
+	  0%  { background-color: #ccc; }
+	  49% { background-color: #ccc; }
+	  50% { background-color: transparent; }
+	  99% { background-color: transparent; }
+	  100%  { background-color: #ccc; }
+	}
+}
+.search-results-header{color:#ffffff;font-weight: 800;font-size: 28px;text-align: center;}
+
+.subtitle-display{font-weight: 500;font-size: 18px;}
+
+.master-search{
+	.search {
+    	position: relative;
+    	box-shadow: 0 0 40px rgba(0, 0, 0, .1)
+	}
+
+	.search input {
+	    height: 60px;
+	    text-indent: 25px;
+	    border: 2px solid #e5e5e5;
+	}
+
+	.search input:focus {
+	    box-shadow: none;
+	    border: 2px solid #B31942;
+	}
+
+	.search .fa-search {
+	    position: absolute;
+	    top: 20px;
+	    left: 16px;
+	}
+
+	.search button {
+	    position: absolute;
+	    top: 5px;
+	    right: 5px;
+	    height: 50px;
+	    width: 110px;
+	    background: #B31942;
+	    border-color:transparent !important;
+	    font-family: 'Inter', sans-serif !important;
+	    font-weight: 500;
+	}
+}
+
+/*Search Results*/
+.mr-navbar{
+	border-bottom: 1px solid #eaeaea;
+}
+.header-group{
+	.header-search-wrapper{
+		font-size: 1rem;
+		height: 40px !important;
+	}
+	.input-group-append{
+		padding: .02rem .2rem;
+	}
+}
+.card-text{margin-bottom: 5px;}
+
+
+
+/*Card*/
+.micro-card{
+	max-width: 254px;
+	border:1px solid #e5e5e5;
+	border-radius: 5px;
+	overflow: hidden;
+
+	.report-button-wrapper{
+		text-align: center;
+		.btn{border:0;font-size: 10px;}
+		.btn:hover{background-color: #2665FF;}
+	}
+	.card-thumbnail-wrapper{
+		position: relative;
+	    display: flex;
+	    -webkit-box-align: center;
+	    align-items: center;
+	    -webkit-box-pack: center;
+	    justify-content: center;
+
+	    overflow: hidden;
+	    a img{width:100%;padding:10px;}
+	}
+	.micro-card-body{
+		padding:10px;
+		.card-icons{
+			display: inline-block;
+			.icon-wrapper{float:left;margin:2px 4px;}
+		}
+	}
+}
+.card-price{color:#2665FF;font-size: 16px;}
+.cart-product-name{color:#0A3161;font-weight: 700;font-size: 14px;}
+.cart-brand-name{color:#6c757d;font-weight: 500;font-size: 12px;}
+/*End of card*/
+
+/*Why buy american*/
+.bg-gray{background-color: #e9ecef;}
+.why-buy-american-wrapper{
+	text-align: center;
+	h3{font-weight: 700;font-size: 24px;color:#0A3161;}
+	p{font-size: 18px;color:#6c757d;}
+}
+.text-subtitle{font-size: 18px;color:#6c757d;text-align: center;}
+
+/*Footer*/
+footer {
+	color:white;
+	.footer-logo{
+		display: block;
+	    float: left;
+	    height: 48px;
+	    width: 150px;
+	    margin-left: -5px;
+	    margin-right: 20px;
+	    background-image: url("img/maderank-white.svg");
+	    background-repeat: no-repeat;
+	    background-position: center center;
+    }
+}
+
+/*Card tooltip*/
+.gear-box {
+  /*top: 10px;*/
+  /*right: 0;*/
+  margin-top:10px;
+  margin-left:10px;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  padding: 1px 4px;
+  border-radius: 20px;
+  i{color:#0d6efd;}
+}
+.gear-box:hover{
+	background-color: #0d6efd;
+	transition: all 1.5s ease;
+	i{color:white;}
+}
+#tooltip {
+	background-color: #333;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-size: 13px;
+}
+#tooltip {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px; 
+}
+.dropdown_description {
+  text-align: center;
+  color: #000000;
+  font-weight: 700;
+  font-size: 12px;
+}
+.dropdown-menu{
+	margin-left: 12px !important;
+	li a{font-size: 14px;}
+}
+.fa-check, .fa-shield-check{color:#4fbfa8;}
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress {
+  width: 100px;
+  height: 100px;
+  background: none;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 8px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.score-title, .maderank-score{color:#0A3161;}
+.score-title{text-transform:uppercase;letter-spacing: .025rem;}
+.score-title span{font-weight: 400;}
+.maderank-score{font-weight: 700;font-size: 3rem;}
+.score-classification{font-weight: 500;letter-spacing: .025rem;font-size: 14px;}
+
+#score-a{
+	.score-color{color:#1770de;}
+	.progress, .progress::after {
+	  border-color: #1770de !important;
+	}
+}
+#score-b{
+	.score-color{color:#4fbfa8;}
+	.progress, .progress::after {
+	  border-color: #4fbfa8 !important;
+	}
+}
+#score-c{
+	.score-color{color:#ffb703;}
+	.progress, .progress::after {
+	  border-color: #ffb703 !important;
+	}
+}
+
+.legal-wrapper{
+	margin-top: 100px;
+}
+/*End of Card tooltip*/
