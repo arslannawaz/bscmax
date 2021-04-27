@@ -40,8 +40,8 @@
               <!-- /.card-header -->
               <div id="buttons"></div>
               <div class="card-header">
-               
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal" class="btn btn-md btn-primary" style="float: right;">Import Excel</a>
+                <a href="{{url('admin/add-wallet')}}" class="btn btn-md btn-primary" style="float: right;">Add Wallet</a>
+                <!-- <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal" class="btn btn-md btn-primary" style="float: right;">Import Excel</a> -->
               </div>
               <!-- model -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -92,22 +92,28 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach($wallets->data as $row)
                        <tr>
-                          <td>1</td>
-                          <td>8pay</td>
-                          <td>Yes</td>
-                          <td>No</td>
-                          <td></td>
-                          <td>BSC Wallet</td>
-                          <td>fsdfs5434534</td>
-                          <td>42523</td>
-                          <td>342</td>
-                          <td>5</td>
-                          <td>Enable</td>
+                          <td>{{$row->_id}}</td>
+                          <td>{{$row->projName}}</td>
+                          <td>{{$row->preSaleStarted}}</td>
+                          <td>{{$row->whiteListed}}</td>
+                          <td>{{$row->country}}</td>
+                          <td>{{$row->walletType}}</td>
+                          <td>{{$row->walletAddress}}</td>
+                          <td>{{$row->numberBsmxStaked}}</td>
+                          <td>{{$row->maxBNBPerWallet}}</td>
+                          <td>{{$row->purchasedBNBAmount}}</td>
+                          <td>{{$row->wallet}}</td>
                           
                           <td style="width: 30%">
-                          <a href="" class="btn btn-sm btn-primary">Save changes</a>
-                        </td>
+                            <a href="{{route('editwallet',$row->_id)}}" class="btn btn-sm btn-info">Edit</a>
+                            <!-- <a href="" class="btn btn-sm btn-primary">Save changes</a> -->
+                            <a href="{{route('deletewallet',$row->_id)}}" class="btn btn-sm btn-danger">Delete</a>
+
+                          </td>
+                        </tr>
+                  @endforeach
                         
                   </tbody>
                   

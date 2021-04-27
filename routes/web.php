@@ -28,10 +28,10 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 		session()->put('page','dashboard');
 		return view('admin.dashboard');
 	});
-	Route::get('wallets',function(){
-		session()->put('page','wallets');
-		return view('admin.wallets');
-	});
+	// Route::get('wallets',function(){
+	// 	session()->put('page','wallets');
+	// 	return view('admin.wallets');
+	// });
 	Route::get('refunds',function(){
 		session()->put('page','refunds');
 		return view('admin.refunds');
@@ -76,6 +76,14 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	Route::get('edit-project/{id}',array('as'=>'editproject','uses'=>'ProjectController@edit'));
 	Route::post('update-project/{id}',array('as'=>'updateproject','uses'=>'ProjectController@update'));
 	Route::get('delete-project/{id}',array('as'=>'deleteproject','uses'=>'ProjectController@destroy'));
+
+	//wallet
+	Route::get('wallets',array('as'=>'viewwallet','uses'=>'WalletController@index'));
+	Route::get('add-wallet',array('as'=>'addwallet','uses'=>'WalletController@create'));
+	Route::post('store-wallet',array('as'=>'storewallet','uses'=>'WalletController@store'));
+	Route::get('edit-wallet/{id}',array('as'=>'editwallet','uses'=>'WalletController@edit'));
+	Route::post('update-wallet/{id}',array('as'=>'updatewallet','uses'=>'WalletController@update'));
+	Route::get('delete-wallet/{id}',array('as'=>'deletewallet','uses'=>'WalletController@destroy'));
 
 
 	//edit password
