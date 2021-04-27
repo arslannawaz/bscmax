@@ -37,7 +37,7 @@
           @include('admin.include.alerts')
             <!-- general form elements -->
             <div class="card card-primary">
-              <form role="form" method="post" action="{{ url('update-password') }}" enctype="multipart/form-data">
+              <form role="form" method="post" action="{{ route('updatepassword') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

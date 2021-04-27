@@ -102,8 +102,8 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	Route::get('delete-refund/{id}',array('as'=>'deleterefund','uses'=>'RefundController@destroy'));
 
 	//edit password
-	Route::get('change-password','LoginController@change_password')->name('change-password');
-	Route::post('update-password','LoginController@update_password')->name('update-password');
+	Route::get('change-password', array('as'=>'change-password','uses'=>'LoginController@change_password'));
+	Route::post('update-password',array('as'=>'updatepassword','uses'=>'LoginController@update_password'));
 });
 
 

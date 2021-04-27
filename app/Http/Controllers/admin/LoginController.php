@@ -37,23 +37,27 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('admin');
       }
-       public function change_password()
+
+
+      public function change_password()
       {
-          Session::put('page','password');
+        Session::put('page','password');
         return view('admin.change-password');
       }
-       public function update_password(Request $request)
-    {
-      $validator =  $request->validate([
+    
+    
+      public function update_password(Request $request)
+      {
+        $validator =  $request->validate([
         'current' => 'required|string|min:8',
-        'password' => 'required|string|min:8|same:confirm',
-        'confirm' => 'required',
+        'password' => 'required|string|min:8',
+        'confirm' => 'required|string|min:8|same:password',
         'email'=>'required|email',
         ]);
 
-      $hashedPassword = Auth::user()->password;
-      if (\Hash::check($request['current'] , $hashedPassword ))
-      {
+        $hashedPassword = Auth::user()->password;
+        if (\Hash::check($request['current'] , $hashedPassword ))
+        {
            $password=Hash::make($request['password']);
             $user=User::find(Auth::user()->id);
            
