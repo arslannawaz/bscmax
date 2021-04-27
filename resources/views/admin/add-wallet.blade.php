@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="name">white Listed</label>
+                      <label for="name">White Listed</label>
                       <input type="text" class="form-control"  name="whitelisted" value="@if(isset($wallet)){{$wallet->whiteListed}}@endif"  required>
                     </div>
 

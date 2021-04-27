@@ -40,6 +40,7 @@
               <!-- /.card-header -->
               <div id="buttons"></div>
               <div class="card-header">
+                <a href="{{url('admin/add-claim ')}}" class="btn btn-md btn-primary" style="float: right;">Add Claim Token</a>
               </div>
 
               <div class="card-body">
@@ -59,21 +60,25 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach($claimtoken->data as $row)
                        <tr>
-                          <td>1</td>
-                          <td>8pay</td>
-                          <td>Yes</td>
-                          <td>No</td>
-                          <td>34</td>
-                          <td>3</td>
-                          <td>42</td>
-                          <td>2%</td>
-                          <td>Enable</td>
-                          
+                          <td>{{$row->_id}}</td>
+                          <td>{{$row->projName}}</td>
+                          <td>{{$row->preSaleDateTimeStart}}</td>
+                          <td>{{$row->preSaleDateTimeClose}}</td>
+                          <td>{{$row->numberOfParticipant}}</td>
+                          <td>{{$row->numberOfTokenPurchased}}</td>
+                          <td>{{$row->numberOfBNBRaised}}</td>
+                          <td>{{$row->purchaseProgressPercentage}}</td>
+                          <td>{{$row->claimToken}}</td>
                           <td style="width: 30%">
-                          <a href="" class="btn btn-sm btn-primary">Save changes</a>
-                        </td>
-                        
+                            <a href="{{route('editclaim',$row->_id)}}" class="btn btn-sm btn-info">Edit</a>
+
+                            <!-- <a href="" class="btn btn-sm btn-primary">Save changes</a> -->
+                            <a href="{{route('deleteclaim',$row->_id)}}" class="btn btn-sm btn-danger">Delete</a>
+                          </td>
+                        </tr>
+                      @endforeach
                   </tbody>
                   
                 </table>

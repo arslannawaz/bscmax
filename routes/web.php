@@ -36,10 +36,10 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 		session()->put('page','refunds');
 		return view('admin.refunds');
 	});
-	Route::get('claim',function(){
-		session()->put('page','claim');
-		return view('admin.claims');
-	});
+	// Route::get('claim',function(){
+	// 	session()->put('page','claim');
+	// 	return view('admin.claims');
+	// });
 	Route::get('project-opened',function(){
 		session()->put('page','opened');
 		return view('admin.project-opened');
@@ -84,6 +84,14 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	Route::get('edit-wallet/{id}',array('as'=>'editwallet','uses'=>'WalletController@edit'));
 	Route::post('update-wallet/{id}',array('as'=>'updatewallet','uses'=>'WalletController@update'));
 	Route::get('delete-wallet/{id}',array('as'=>'deletewallet','uses'=>'WalletController@destroy'));
+
+	//claim
+	Route::get('claim',array('as'=>'viewclaim','uses'=>'ClaimTokenController@index'));
+	Route::get('add-claim',array('as'=>'addclaim','uses'=>'ClaimTokenController@create'));
+	Route::post('store-claim',array('as'=>'storeclaim','uses'=>'ClaimTokenController@store'));
+	Route::get('edit-claim/{id}',array('as'=>'editclaim','uses'=>'ClaimTokenController@edit'));
+	Route::post('update-claim/{id}',array('as'=>'updateclaim','uses'=>'ClaimTokenController@update'));
+	Route::get('delete-claim/{id}',array('as'=>'deleteclaim','uses'=>'ClaimTokenController@destroy'));
 
 
 	//edit password
