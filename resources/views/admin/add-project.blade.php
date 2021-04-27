@@ -70,7 +70,7 @@
                   </div>
                   <div class="form-group">
                     <label for="listing">Listing date /time</label>
-                    <input type="text" class="form-control" value="@if(isset($project)){{$project->listingTimeDate}}@endif"  id="listing" name="listing_date" placeholder="Write listing date">
+                    <input type="datetime-local" class="form-control" value="@if(isset($project)){{$project->listingTimeDate}}@endif"  id="listing" name="listing_date" placeholder="Write listing date">
                   </div>
                   <div class="form-group">
                     <label for="listing">BNB per token</label>
@@ -118,14 +118,14 @@
                   </div> -->
                   <div class="form-group">
                     <label for="listing">Open time/ date</label>
-                    <input type="text" class="form-control" value="@if(isset($project)){{$project->openTimeDate}}@endif"  id="listing" name="open_date" placeholder="Write Open time/ date" required>
+                    <input type="datetime-local" class="form-control" value="@if(isset($project)){{$project->openTimeDate}}@endif"  id="listing" name="open_date" placeholder="Write Open time/ date" required>
                   </div>
                    <div class="form-group">
                     <label for="listing">Close time/date</label>
-                    <input type="text" class="form-control" value="@if(isset($project)){{$project->closeTimeDate}}@endif"  id="listing" name="close_date" placeholder="Write Close time/date" required>
+                    <input type="datetime-local" class="form-control" value="@if(isset($project)){{$project->closeTimeDate}}@endif"  id="listing" name="close_date" placeholder="Write Close time/date" required>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group"
                     <label for="listing">Status</label>
                     <select class="form-control" name="status" required>
                       <option @if(isset($project)) @if($project->status=='Open') selected @endif @endif value="Open">Open</option>
