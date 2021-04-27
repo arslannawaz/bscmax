@@ -17,6 +17,7 @@ class ClaimTokenController extends Controller
      */
     public function index()
     {
+        session()->put('page','claim');
         $baseurl=$this->getBaseURL();
         $client = new Client();
         $url = $baseurl."/api/claimToken/getAllClaimToken";

@@ -17,6 +17,7 @@ class WalletController extends Controller
      */
     public function index()
     {
+        session()->put('page','wallets');
         $baseurl=$this->getBaseURL();
         $client = new Client();
         $url = $baseurl."/api/wallet/getAllWallet";

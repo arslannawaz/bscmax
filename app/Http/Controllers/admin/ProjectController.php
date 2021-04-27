@@ -18,6 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        session()->put('page','projects');
         $baseurl=$this->getBaseURL();
         $client = new Client();
         $url = $baseurl."/api/project/getAllProject";

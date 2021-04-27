@@ -32,10 +32,10 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	// 	session()->put('page','wallets');
 	// 	return view('admin.wallets');
 	// });
-	Route::get('refunds',function(){
-		session()->put('page','refunds');
-		return view('admin.refunds');
-	});
+	// Route::get('refunds',function(){
+	// 	session()->put('page','refunds');
+	// 	return view('admin.refunds');
+	// });
 	// Route::get('claim',function(){
 	// 	session()->put('page','claim');
 	// 	return view('admin.claims');
@@ -93,6 +93,13 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	Route::post('update-claim/{id}',array('as'=>'updateclaim','uses'=>'ClaimTokenController@update'));
 	Route::get('delete-claim/{id}',array('as'=>'deleteclaim','uses'=>'ClaimTokenController@destroy'));
 
+	//refunds
+	Route::get('refunds',array('as'=>'viewrefund','uses'=>'RefundController@index'));
+	Route::get('add-refund',array('as'=>'addrefund','uses'=>'RefundController@create'));
+	Route::post('store-refund',array('as'=>'storerefund','uses'=>'RefundController@store'));
+	Route::get('edit-refund/{id}',array('as'=>'editrefund','uses'=>'RefundController@edit'));
+	Route::post('update-refund/{id}',array('as'=>'updaterefund','uses'=>'RefundController@update'));
+	Route::get('delete-refund/{id}',array('as'=>'deleterefund','uses'=>'RefundController@destroy'));
 
 	//edit password
 	Route::get('change-password','LoginController@change_password')->name('change-password');

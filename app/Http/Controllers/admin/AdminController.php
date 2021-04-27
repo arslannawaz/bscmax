@@ -17,6 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+        session()->put('page','users');
         $baseurl=$this->getBaseURL();
         $client = new Client();
         $url = $baseurl."/api/user/getAllUser";
