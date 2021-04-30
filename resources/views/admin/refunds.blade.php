@@ -40,38 +40,39 @@
               <!-- /.card-header -->
               <div id="buttons"></div>
               <div class="card-header">
-               
+              <a href="{{url('admin/add-refund')}}" class="btn btn-md btn-primary" style="float: right;">Add Refund</a>
               </div>
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                      <th>ID</th>
-                    <th>Project name</th>
+                    <th>Project Name</th>
                     <th>Whitelisted</th>
-                    <th>Whitelisted</th>
-                    <th>Wallet address</th>
-                    <th>Purchased amount</th>
-                    <th>Get refund button</th>
-                    <th>Refund amount </th>
+                    <th>Wallet Address</th>
+                    <th>Purchased Amount</th>
+                    <!-- <th>Get Refund Button</th> -->
+                    <th>Refund Amount </th>
                      <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach($refunds->data as $row)
                        <tr>
-                          <td>1</td>
-                          <td>8pay</td>
-                          <td>Yes</td>
-                          <td>No</td>
-                          <td>fsdfs5434534</td>
-                          <td>342</td>
-                          <td>Active</td>
-                          <td>300</td>
-                          
+                          <td>{{$row->_id}}</td>
+                          <td>{{$row->projName}}</td>
+                          <td>{{$row->whiteListed}}</td>
+                          <td>{{$row->walletAddress}}</td>
+                          <td>{{$row->purchaseAmount}}</td>
+                          <!-- <td>{{$row->getRefundButton}}</td> -->
+                          <td>{{$row->refundAmount}}</td>  
                           <td style="width: 30%">
-                          <a href="" class="btn btn-sm btn-primary">Save changes</a>
-                        </td>
-                        
+                            <a href="{{route('editrefund',$row->_id)}}" class="btn btn-sm btn-info">Edit</a>
+                            <!-- <a href="" class="btn btn-sm btn-primary">Save changes</a> -->
+                            <a href="{{route('deleterefund',$row->_id)}}" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                  @endforeach
                   </tbody>
                   
                 </table>

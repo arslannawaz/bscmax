@@ -18,18 +18,18 @@ class RefundController extends Controller
     public function index()
     {
         session()->put('page','refunds');
-        // $baseurl=$this->getBaseURL();
-        // $client = new Client();
-        // $url = $baseurl."/api/claimToken/getAllClaimToken";
-        // $headers = [
-        //     'Content-Type: application/json',
-        // ];
-        // $response = $client->request('GET', $url, [
-        //     'verify'  => false,
-        //     'headers' => $headers,
-        // ]);
-        // $refunds = json_decode($response->getBody());
-        return view('admin.refunds');
+        $baseurl=$this->getBaseURL();
+        $client = new Client();
+        $url = $baseurl."/api/refund/getAllRefund";
+        $headers = [
+            'Content-Type: application/json',
+        ];
+        $response = $client->request('GET', $url, [
+            'verify'  => false,
+            'headers' => $headers,
+        ]);
+        $refunds = json_decode($response->getBody());
+        return view('admin.refunds',compact('refunds'));
     }
 
     /**
@@ -39,7 +39,7 @@ class RefundController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add-refund');
     }
 
     /**
@@ -50,7 +50,28 @@ class RefundController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $baseurl=$this->getBaseURL();
+        $client = new Client();
+        $url = $baseurl."/api/refund/createRefund";
+        $headers = [
+            'Content-Type: application/json',
+        ];
+        $params = [
+            "projName"=>$request->projName,
+            "whiteListed"=>$request->whiteListed,
+            "walletAddress"=>$request->walletAddress,
+            "purchaseAmount"=>$request->purchaseAmount,
+            "refundAmount"=>$request->refundAmount,
+            "getRefundButton"=>"false",
+        ];
+        $response = $client->request('POST', $url, [
+            'verify'  => false,
+            'headers' => $headers,
+            'json' => $params,
+        ]);
+        //$refund = json_decode($response->getBody());
+        //print_r($refund);
+        return redirect()->route('viewrefund')->with("success","Refund Created Successfully");
     }
 
     /**
@@ -72,7 +93,19 @@ class RefundController extends Controller
      */
     public function edit($id)
     {
-        //
+        $baseurl=$this->getBaseURL();
+        $client = new Client();
+        $url = $baseurl."/api/refund/getRefundById/".$id;
+        $headers = [
+            'Content-Type: application/json',
+        ];
+        $response = $client->request('GET', $url, [
+            'verify'  => false,
+            'headers' => $headers,
+        ]);
+        $refunds = json_decode($response->getBody());
+        $refund=$refunds->data;
+		return view('admin.add-refund',compact('refund'));
     }
 
     /**
@@ -84,7 +117,28 @@ class RefundController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $baseurl=$this->getBaseURL();
+        $client = new Client();
+        $url = $baseurl."/api/refund/updateRefund/".$id;
+        $headers = [
+            'Content-Type: application/json',
+        ];
+        $params = [
+            "projName"=>$request->projName,
+            "whiteListed"=>$request->whiteListed,
+            "walletAddress"=>$request->walletAddress,
+            "purchaseAmount"=>$request->purchaseAmount,
+            "refundAmount"=>$request->refundAmount,
+            "getRefundButton"=>"false",
+        ];
+        $response = $client->request('PUT', $url, [
+            'verify'  => false,
+            'headers' => $headers,
+            'json' => $params,
+        ]);
+        //$refund = json_decode($response->getBody());
+        //print_r($refund);
+        return redirect()->route('viewrefund')->with("success","Refund Updated Successfully");
     }
 
     /**
@@ -95,6 +149,17 @@ class RefundController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $baseurl=$this->getBaseURL();
+        $client = new Client();
+        $url = $baseurl."/api/refund/deleteRefund/".$id;
+        $headers = [
+            'Content-Type: application/json',
+        ];
+        $response = $client->request('DELETE', $url, [
+            'verify'  => false,
+            'headers' => $headers,
+        ]);
+        $users = json_decode($response->getBody());
+        return redirect()->route('viewrefund')->with("success","Refund Deleted Successfully");
     }
 }

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('page_title','Project Opened')
+@section('page_title','Opened Projects')
 
 @section('pagelevel_stylesheets')
 
@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Project Opened</h1>
+            <h1 class="m-0 text-dark">Projects</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -40,7 +40,6 @@
               <!-- /.card-header -->
               <div id="buttons"></div>
               <div class="card-header">
-               
               </div>
 
               <div class="card-body">
@@ -49,10 +48,12 @@
                   <tr>
                      <th>ID</th>
                     <th>Name</th>
+                    <th>Description</th>
                     <th>Logo</th>
                     <th>Publish</th>
                     <th>Status</th>
                     <th>Token address</th>
+                    <th>Total supply</th>
                     <th>Listing date /time</th>
                     <th>BNB per token</th>
                     <th>BNB raised</th>
@@ -63,60 +64,61 @@
                     <th>Presale rate</th>
                     <th>Pancake swap price</th>
                     <th>Liquidity allocation</th>
-                    <th>Liquidity lock</th>
+                    <th>Liquidity duration</th>
+                    <!-- <th>Liquidity lock</th> -->
+                    <th>Smart contract address</th>
+                    <th>Go swap address</th>
+                    <th>Twitter</th>
+                    <th>Medium</th>
+                    <th>Website</th>
+                    <th>Telegram</th>
                     <th>Open time/ date</th>
                     <th>Close time/date</th>
-                    <th>Token contract address</th>
-                    <th>Pancake swap address</th>
-                     <th>Locked liquidity address</th>
-                     <th>Goswapp Address</th>
-                     <th>Presale Contract Adress</th>
-                     <th>Social media</th>
-                     <th>Medium link</th>
-                     <th>Twitter link</th>
-                     <th>Telegram link</th>
-                     <th>Website link</th>
-                     <th>Discord</th>
                      <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach($projects->data as $row)
                        <tr>
-                          <td>1</td>
-                          <td>8pay</td>
+                          <td>{{$row->_id}}</td>
+                          <td>{{$row->name}}</td>
+                          <td>{{$row->description}}</td>
+                          <td><img src="{{$row->logoImage}}" width="40px" height="40px"></td>
+                          @if($row->publish==true)
                           <td>Yes</td>
+                          @else
                           <td>No</td>
-                          <td></td>
-                          <td>BSC Wallet</td>
-                          <td>fsdfs5434534</td>
-                          <td>42523</td>
-                          <td>342</td>
-                          <td>5</td>
-                          <td>Enable</td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          @endif
+                          <td>{{$row->status}}</td>
+                          <td>{{$row->tokenAddress}}</td>
+                          <td>{{$row->totalSupply}}</td>
+                          <td>{{$row->listingTimeDate}}</td>
+                          <td>{{$row->BNBPerToken}}</td>
+                          <td>{{$row->BNBRaised}}</td>
+                          <td>{{$row->softCap}}</td>
+                          <td>{{$row->hardCap}}</td>
+                          <td>{{$row->minPerWallet}}</td>
+                          <td>{{$row->maxPerWallet}}</td>
+                          <td>{{$row->preSaleRate}}</td>
+                          <td>{{$row->panCakeSwapPrice}}</td>
+                          <td>{{$row->liquidityAllocation}}</td>
+                          <td>{{$row->liquidityDuration}}</td>
+                          <!-- <td>{{$row->description}}</td> -->
+                          <td>{{$row->smartContractAddress}}</td>
+                          <td>{{$row->goSwapAddress}}</td>
+                           <td>{{$row->twitterLink}}</td>
+                           <td>{{$row->mediumLink}}</td>
+                           <td>{{$row->website}}</td>
+                           <td>{{$row->telegramLink}}</td>
+                           <td>{{$row->openTimeDate}}</td>
+                           <td>{{$row->closeTimeDate}}</td>
+                          
                           <td style="width: 30%">
-                          <a href="{{url('admin/edit-project')}}" class="btn btn-sm btn-info">Edit</a>
+                          <a href="{{route('editproject',$row->_id)}}" class="btn btn-sm btn-info">Edit</a>
                           <a href="" class="btn btn-sm btn-primary">Save changes</a>
-                          <a href="" class="btn btn-sm btn-danger">Delete</a>
+                          <a href="{{route('deleteproject',$row->_id)}}" class="btn btn-sm btn-danger">Delete</a>
                         </td>
+                      @endforeach
                         
                   </tbody>
                   

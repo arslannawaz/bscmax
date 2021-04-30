@@ -33,6 +33,27 @@ class ProjectController extends Controller
         return view('admin.projects',compact('projects'));
     }
 
+    public function getOpenedProject()
+    {
+        session()->put('page','opened');
+        $baseurl=$this->getBaseURL();
+        $client = new Client();
+        $url = $baseurl."/api/project/getProjectsByStatus";
+        $headers = [
+            'Content-Type: application/json',
+        ];
+        $params = [
+            "status"=>'Open',
+        ];
+        $response = $client->request('POST', $url, [
+            'verify'  => false,
+            'headers' => $headers,
+            'json' => $params,
+        ]);
+        $projects = json_decode($response->getBody());
+        return view('admin.project-opened',compact('projects'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -187,7 +208,13 @@ class ProjectController extends Controller
             'headers' => $headers,
             'json' => $params,
         ]);
-        return redirect()->route('viewproject')->with("success","Project Updated Successfully");
+
+        if (session('page')=='opened'){
+            return redirect()->route('viewopenedproject')->with("success","Project Updated Successfully");
+        }
+        else{
+            return redirect()->route('viewproject')->with("success","Project Updated Successfully");
+        }
     }
 
     /**
@@ -209,6 +236,11 @@ class ProjectController extends Controller
             'headers' => $headers,
         ]);
         $users = json_decode($response->getBody());
-        return redirect()->route('viewproject')->with("success","Project Deleted Successfully");
+        if (session('page')=='opened'){
+            return redirect()->route('viewopenedproject')->with("success","Project Deleted Successfully");
+        }
+        else{
+            return redirect()->route('viewproject')->with("success","Project Deleted Successfully");
+        }
     }
 }

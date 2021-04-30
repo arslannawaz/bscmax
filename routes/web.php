@@ -40,10 +40,10 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	// 	session()->put('page','claim');
 	// 	return view('admin.claims');
 	// });
-	Route::get('project-opened',function(){
-		session()->put('page','opened');
-		return view('admin.project-opened');
-	});
+	// Route::get('project-opened',function(){
+	// 	session()->put('page','opened');
+	// 	return view('admin.project-opened');
+	// });
 	// Route::get('add-project',function(){
 	// 	session()->put('page','projects');
 	// 	return view('admin.add-project');
@@ -76,6 +76,9 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	Route::get('edit-project/{id}',array('as'=>'editproject','uses'=>'ProjectController@edit'));
 	Route::post('update-project/{id}',array('as'=>'updateproject','uses'=>'ProjectController@update'));
 	Route::get('delete-project/{id}',array('as'=>'deleteproject','uses'=>'ProjectController@destroy'));
+
+	//opened project
+	Route::get('project-opened',array('as'=>'viewopenedproject','uses'=>'ProjectController@getOpenedProject'));
 
 	//wallet
 	Route::get('wallets',array('as'=>'viewwallet','uses'=>'WalletController@index'));
