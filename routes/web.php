@@ -24,10 +24,10 @@ Route::get('logout','admin\LoginController@logout')->name('logout');
 
 Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], function()
 {
-	Route::get('/',function(){
-		session()->put('page','dashboard');
-		return view('admin.dashboard');
-	});
+	// Route::get('/',function(){
+	// 	session()->put('page','dashboard');
+	// 	return view('admin.dashboard');
+	// });
 	// Route::get('wallets',function(){
 	// 	session()->put('page','wallets');
 	// 	return view('admin.wallets');
@@ -60,6 +60,9 @@ Route::group(['namespace'=>'admin','prefix'=>'admin','middleware' => 'auth'], fu
 	// 	session()->put('page','users');
 	// 	return view('admin.users');
 	// });
+
+	//dashboard
+	Route::get('/',array('as'=>'viewdashboard','uses'=>'AdminController@viewDashboard'));
 
 	//user
 	Route::get('users',array('as'=>'viewadmin','uses'=>'AdminController@index'));

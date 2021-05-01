@@ -165,4 +165,21 @@ class AdminController extends Controller
         $users = json_decode($response->getBody());
         return redirect()->route('viewadmin')->with("success","User Deleted Successfully");
     }
+
+    public function viewDashboard()
+    {
+        session()->put('page','dashboard');
+        $baseurl=$this->getBaseURL();
+        $client = new Client();
+        $url = $baseurl."/api/project/getDashboardInfo";
+        $headers = [
+            'Content-Type: application/json',
+        ];
+        $response = $client->request('GET', $url, [
+            'verify'  => false,
+            'headers' => $headers,
+        ]);
+        $dashboard = json_decode($response->getBody());
+		return view('admin.dashboard',compact('dashboard'));
+    }
 }
