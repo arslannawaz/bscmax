@@ -108,7 +108,11 @@ class ProjectController extends Controller
             "twitterLink"=>$request->twitter,
             "mediumLink"=>$request->medium,
             "telegramLink"=>$request->telegram,
-            "publish"=> $request->publish
+            "publish"=> $request->publish,
+            "panCakeSwapAddress"=>$request->panCakeSwapAddress,
+            "participants"=>$request->participants,
+            "expand"=>$request->expand,
+            "access"=>$request->access,
         ];
         $response = $client->request('POST', $url, [
             'verify'  => false,
@@ -201,7 +205,11 @@ class ProjectController extends Controller
             "twitterLink"=>$request->twitter,
             "mediumLink"=>$request->medium,
             "telegramLink"=>$request->telegram,
-            "publish"=> $request->publish
+            "publish"=> $request->publish,
+            "panCakeSwapAddress"=>$request->panCakeSwapAddress,
+            "participants"=>$request->participants,
+            "expand"=>$request->expand,
+            "access"=>$request->access,
         ];
         $response = $client->request('PUT', $url, [
             'verify'  => false,

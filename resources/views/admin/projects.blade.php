@@ -75,7 +75,11 @@
                     <th>Telegram</th>
                     <th>Open time/ date</th>
                     <th>Close time/date</th>
-                     <th>Actions</th>
+                    <th>Participants</th>
+                    <th>Pancake Swap Address</th>
+                    <th>Access</th>
+                    <th>Expand</th>
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -113,6 +117,10 @@
                            <td>{{$row->telegramLink}}</td>
                            <td>{{$row->openTimeDate}}</td>
                            <td>{{$row->closeTimeDate}}</td>
+                           <td>{{$row->participants}}</td>
+                           <td>{{$row->panCakeSwapAddress}}</td> 
+                           <td>{{$row->access}}</td>
+                           <td>{{$row->expand}}</td> 
                           
                           <td style="width: 30%">
                           <a href="{{route('editproject',$row->_id)}}" class="btn btn-sm btn-info">Edit</a>

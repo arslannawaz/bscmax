@@ -166,8 +166,29 @@
                        <option @if(isset($project)) @if($project->publish==false) selected @endif @endif value="false">No</option>
                     </select>
                   </div>
-                                   
-                
+
+                  <div class="form-group">
+                    <label for="listing">Participants</label>
+                    <input min="1" type="number" class="form-control" value="@if(isset($project)){{$project->participants}}@endif"  id="listing" name="participants" placeholder="" >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="listing">Pancake Swap Address</label>
+                    <input type="text" class="form-control" value="@if(isset($project)){{$project->panCakeSwapAddress}}@endif"  id="listing" name="panCakeSwapAddress" placeholder="" >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="listing">Access</label>
+                    <input type="text" class="form-control" value="@if(isset($project)){{$project->access}}@endif"  id="listing" name="access" placeholder="" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="listing">Expand</label>
+                    <select class="form-control" name="expand" required>
+                      <option @if(isset($project)) @if($project->expand==true) selected @endif @endif value="true">Yes</option>
+                       <option @if(isset($project)) @if($project->expand==false) selected @endif @endif value="false">No</option>
+                    </select>
+                  </div>
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" style="float: right;background-color: #FD5814;border:none;" name="submit" >Save</button>
