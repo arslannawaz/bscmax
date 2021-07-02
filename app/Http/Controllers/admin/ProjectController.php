@@ -234,6 +234,7 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $baseurl=$this->getBaseURL();
+        
         $client = new Client();
         $url = $baseurl."/api/project/deleteProject/".$id;
         $headers = [
