@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Session;
 
 class AdminController extends Controller
@@ -51,6 +54,18 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' =>'required'
+        ]);
+
+        User::create([
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "password"=>bcrypt($request->password),
+        ]);
 
         $image_path = cloudinary()->upload($request->file('picture')->getRealPath())->getSecurePath();
         $baseurl=$this->getBaseURL();
